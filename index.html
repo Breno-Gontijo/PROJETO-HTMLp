@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgendaFácil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <h1>AgendaFácil</h1>
+
+        <!-- Menu -->
+        <nav>
+            <a href="index.html">Calendário</a>
+            <a href="cadastro.html">Nova tarefa</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Título da página -->
+        <section class="intro">
+            <h2>Meu calendário</h2>
+            <p>Organize suas tarefas e compromissos.</p>
+            <a class="botao" href="cadastro.html">+ Nova tarefa</a>
+        </section>
+
+        <!-- Calendário -->
+        <section class="calendario">
+            <div class="mes">
+                <button id="anterior">‹</button>
+                <h3 id="nomeMes">Setembro 2026</h3>
+                <button id="proximo">›</button>
+            </div>
+
+            <div id="calendario" class="dias">
+                <!-- Os dias aparecem pelo JavaScript -->
+            </div>
+        </section>
+
+        <!-- Legenda -->
+        <section class="legenda">
+            <p><span class="estudos"></span> Estudos</p>
+            <p><span class="trabalho"></span> Trabalho</p>
+            <p><span class="pessoal"></span> Pessoal</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>AgendaFácil - Organize seu dia</p>
+    </footer>
+
+    <script>
+        // Lista dos meses
+        const meses = [
+            "Janeiro", "Fevereiro", "Março", "Abril",
+            "Maio", "Junho", "Julho", "Agosto",
+            "Setembro", "Outubro", "Novembro", "Dezembro"
+        ];
+
+        // Começa em setembro de 2026
+        let mesAtual = 8;
+        let anoAtual = 2026;
+
+        const nomeMes = document.getElementById("nomeMes");
+        const calendario = document.getElementById("calendario");
+
+        // Mostra o calendário
+        function mostrarCalendario() {
+            calendario.innerHTML = "";
+
+            // Dias da semana
+            const semana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+
+            for (let dia of semana) {
+                const nome = document.createElement("div");
+                nome.className = "diaSemana";
+                nome.textContent = dia;
+                calendario.appendChild(nome);
+            }
+
+            // Descobre o primeiro dia e quantidade de dias do mês
+            const primeiroDia = new Date(anoAtual, mesAtual, 1).getDay();
+            const quantidadeDias = new Date(anoAtual, mesAtual + 1, 0).getDate();
+
+            // Espaços antes do primeiro dia
+            for (let i = 0; i < primeiroDia; i++) {
+                const vazio = document.createElement("div");
+                vazio.className = "dia vazio";
+                calendario.appendChild(vazio);
+            }
+
+            // Cria os dias
+            for (let i = 1; i <= quantidadeDias; i++) {
+                const dia = document.createElement("div");
+                dia.className = "dia";
+                dia.innerHTML = "<strong>" + i + "</strong>";
+
+                // Algumas tarefas apenas para representar a interface
+                if (i === 10 && mesAtual === 8 && anoAtual === 2026) {
+                    dia.innerHTML += '<a class="tarefa estudos" href="detalhes.html">Prova de Cálculo</a>';
+                }
+
+                if (i === 12 && mesAtual === 8 && anoAtual === 2026) {
+                    dia.innerHTML += '<a class="tarefa trabalho" href="detalhes.html">Reunião</a>';
+                }
+
+                calendario.appendChild(dia);
+            }
+
+            nomeMes.textContent = meses[mesAtual] + " " + anoAtual;
+        }
+
+        // Vai para o mês anterior
+        document.getElementById("anterior").onclick = function() {
+            mesAtual--;
+
+            if (mesAtual < 0) {
+                mesAtual = 11;
+                anoAtual--;
+            }
+
+            mostrarCalendario();
+        };
+
+        // Vai para o próximo mês
+        document.getElementById("proximo").onclick = function() {
+            mesAtual++;
+
+            if (mesAtual > 11) {
+                mesAtual = 0;
+                anoAtual++;
+            }
+
+            mostrarCalendario();
+        };
+
+        // Mostra o calendário quando a página abre
+        mostrarCalendario();
+    </script>
+
+</body>
+</html>

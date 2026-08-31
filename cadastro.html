@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgendaFácil - Nova tarefa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <h1>AgendaFácil</h1>
+
+        <nav>
+            <a href="index.html">Calendário</a>
+            <a href="cadastro.html">Nova tarefa</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Nova tarefa</h2>
+            <p>Cadastre uma tarefa ou compromisso.</p>
+        </section>
+
+        <!-- Formulário -->
+        <section class="formulario">
+            <h3>Informações da tarefa</h3>
+
+            <form>
+                <label for="titulo">Título</label>
+                <input type="text" id="titulo" name="titulo"
+                       placeholder="Ex.: Prova de Cálculo">
+
+                <label for="descricao">Descrição</label>
+                <textarea id="descricao" name="descricao"
+                          placeholder="Digite os detalhes da tarefa"></textarea>
+
+                <label for="data">Data</label>
+                <input type="date" id="data" name="data">
+
+                <label for="horario">Horário</label>
+                <input type="time" id="horario" name="horario">
+
+                <label for="categoria">Categoria</label>
+                <select id="categoria" name="categoria">
+                    <option value="">Selecione</option>
+                    <option value="estudos">Estudos</option>
+                    <option value="trabalho">Trabalho</option>
+                    <option value="pessoal">Pessoal</option>
+                </select>
+
+                <div class="botoes">
+                    <a class="botao cancelar" href="index.html">Cancelar</a>
+                    <button class="botao" type="submit">Cadastrar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>AgendaFácil - Organize seu dia</p>
+    </footer>
+
+</body>
+</html>

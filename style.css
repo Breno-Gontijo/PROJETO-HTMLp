@@ -1,0 +1,291 @@
+/* Configurações gerais */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f4f6f8;
+    color: #222;
+    font-family: Arial, sans-serif;
+}
+
+/* Cabeçalho */
+header {
+    background: white;
+    padding: 20px 8%;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    color: #315efb;
+    margin: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #444;
+    margin-left: 20px;
+}
+
+nav a:hover {
+    color: #315efb;
+}
+
+/* Conteúdo */
+main {
+    width: 84%;
+    max-width: 1000px;
+    margin: 40px auto;
+    min-height: 600px;
+}
+
+.intro {
+    margin-bottom: 25px;
+}
+
+.intro h2 {
+    margin-bottom: 5px;
+}
+
+.intro p {
+    color: #666;
+}
+
+/* Botões */
+.botao {
+    display: inline-block;
+    border: 0;
+    border-radius: 6px;
+    background: #315efb;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.botao:hover {
+    background: #244bd0;
+}
+
+.cancelar {
+    background: white;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+/* Calendário */
+.calendario {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.mes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.mes h3 {
+    width: 180px;
+    text-align: center;
+    margin: 0;
+}
+
+.mes button {
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 5px;
+    font-size: 22px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.dias {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.diaSemana {
+    text-align: center;
+    padding: 12px 5px;
+    background: #f8f8f8;
+    color: #666;
+    font-weight: bold;
+}
+
+.dia {
+    min-height: 100px;
+    padding: 8px;
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.dia:nth-child(7n) {
+    border-right: 0;
+}
+
+.vazio {
+    background: #fafafa;
+}
+
+.tarefa {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+    margin-top: 7px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.estudos {
+    background: #315efb;
+}
+
+.trabalho {
+    background: #8b5cf6;
+}
+
+.pessoal {
+    background: #10a77a;
+}
+
+/* Legenda */
+.legenda {
+    background: white;
+    margin-top: 15px;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    gap: 20px;
+}
+
+.legenda p {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legenda span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+/* Formulário */
+.formulario,
+.detalhes {
+    background: white;
+    max-width: 700px;
+    margin: auto;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.formulario h3 {
+    margin-top: 0;
+}
+
+form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.botoes {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+/* Detalhes */
+.detalhes h3 {
+    font-size: 24px;
+}
+
+.categoria {
+    display: inline-block;
+    background: #315efb;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.descricao {
+    background: #f5f5f5;
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.concluida {
+    background: #16845c;
+}
+
+.excluir {
+    background: #dc3545;
+}
+
+/* Rodapé */
+footer {
+    background: white;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 700px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    main {
+        width: 94%;
+    }
+
+    .dias {
+        min-width: 650px;
+    }
+
+    .calendario {
+        overflow-x: auto;
+    }
+
+    .legenda {
+        flex-wrap: wrap;
+    }
+}
