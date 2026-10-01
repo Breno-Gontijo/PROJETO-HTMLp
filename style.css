@@ -266,26 +266,141 @@ footer {
     color: #666;
 }
 
-/* Ajuste para telas menores */
-@media (max-width: 700px) {
+
+@media (max-width: 900px) {
+    header {
+        padding: 18px 5%;
+    }
+
+    main {
+        width: 90%;
+        margin: 30px auto;
+    }
+
+    .dia {
+        min-height: 85px;
+        padding: 6px;
+    }
+
+    .tarefa {
+        font-size: 11px;
+        padding: 4px;
+    }
+
+    .formulario,
+    .detalhes {
+        max-width: 100%;
+    }
+}
+
+/* Responsividade - Smartphone */
+@media (max-width: 600px) {
     header {
         flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        padding: 16px 4%;
+    }
+
+    nav {
+        display: flex;
         gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        margin-left: 0;
     }
 
     main {
         width: 94%;
+        margin: 25px auto;
+        min-height: 500px;
+    }
+
+    .intro {
+        text-align: center;
+    }
+
+    .mes {
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .mes h3 {
+        width: 150px;
+        font-size: 18px;
+    }
+
+    .mes button {
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
     }
 
     .dias {
-        min-width: 650px;
+        grid-template-columns: repeat(7, minmax(42px, 1fr));
     }
 
-    .calendario {
-        overflow-x: auto;
+    .diaSemana {
+        padding: 8px 2px;
+        font-size: 11px;
+    }
+
+    .dia {
+        min-height: 65px;
+        padding: 5px 3px;
+        font-size: 12px;
+    }
+
+    .tarefa {
+        font-size: 9px;
+        padding: 3px;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .legenda {
+        justify-content: center;
+        gap: 10px;
         flex-wrap: wrap;
     }
+
+    .formulario,
+    .detalhes {
+        padding: 18px;
+    }
+
+    .botoes {
+        flex-direction: column;
+    }
+
+    .botoes .botao {
+        width: 100%;
+        text-align: center;
+    }
+
+    .detalhes h3 {
+        font-size: 21px;
+    }
+}
+
+.mensagem {
+    min-height: 20px;
+    margin: 12px 0 0;
+    font-size: 14px;
+    color: #dc3545;
+}
+
+.tarefa.concluida-tarefa {
+    text-decoration: line-through;
+    opacity: .65;
+}
+
+.tarefa {
+    border: 0;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
 }
