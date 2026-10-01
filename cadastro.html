@@ -6,13 +6,9 @@
     <title>AgendaFácil - Nova tarefa</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-    <!-- Cabeçalho -->
     <header>
         <h1>AgendaFácil</h1>
-
         <nav>
             <a href="index.html">Calendário</a>
             <a href="cadastro.html">Nova tarefa</a>
@@ -25,32 +21,31 @@
             <p>Cadastre uma tarefa ou compromisso.</p>
         </section>
 
-        <!-- Formulário -->
         <section class="formulario">
             <h3>Informações da tarefa</h3>
 
-            <form>
+            <form id="formTarefa" novalidate>
                 <label for="titulo">Título</label>
-                <input type="text" id="titulo" name="titulo"
-                       placeholder="Ex.: Prova de Cálculo">
+                <input type="text" id="titulo" placeholder="Ex.: Prova de Cálculo">
 
                 <label for="descricao">Descrição</label>
-                <textarea id="descricao" name="descricao"
-                          placeholder="Digite os detalhes da tarefa"></textarea>
+                <textarea id="descricao" placeholder="Digite os detalhes da tarefa"></textarea>
 
                 <label for="data">Data</label>
-                <input type="date" id="data" name="data">
+                <input type="date" id="data">
 
                 <label for="horario">Horário</label>
-                <input type="time" id="horario" name="horario">
+                <input type="time" id="horario">
 
                 <label for="categoria">Categoria</label>
-                <select id="categoria" name="categoria">
+                <select id="categoria">
                     <option value="">Selecione</option>
                     <option value="estudos">Estudos</option>
                     <option value="trabalho">Trabalho</option>
                     <option value="pessoal">Pessoal</option>
                 </select>
+
+                <p id="mensagem" class="mensagem"></p>
 
                 <div class="botoes">
                     <a class="botao cancelar" href="index.html">Cancelar</a>
@@ -64,5 +59,6 @@
         <p>AgendaFácil - Organize seu dia</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
