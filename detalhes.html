@@ -6,13 +6,9 @@
     <title>AgendaFácil - Detalhes</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-    <!-- Cabeçalho -->
     <header>
         <h1>AgendaFácil</h1>
-
         <nav>
             <a href="index.html">Calendário</a>
             <a href="cadastro.html">Nova tarefa</a>
@@ -25,28 +21,24 @@
             <p>Veja as informações da tarefa selecionada.</p>
         </section>
 
-        <!-- Detalhes da tarefa -->
         <article class="detalhes">
-            <span class="categoria">Estudos</span>
+            <span id="categoriaDetalhes" class="categoria">Estudos</span>
+            <h3 id="tituloDetalhes">Tarefa</h3>
 
-            <h3>Prova de Cálculo</h3>
-
-            <p><strong>Data:</strong> 10/09/2026</p>
-            <p><strong>Horário:</strong> 19:00</p>
+            <p><strong>Data:</strong> <span id="dataDetalhes"></span></p>
+            <p><strong>Horário:</strong> <span id="horarioDetalhes"></span></p>
 
             <div class="descricao">
                 <strong>Descrição:</strong>
-                <p>Prova referente ao conteúdo da primeira unidade.</p>
+                <p id="descricaoDetalhes"></p>
             </div>
 
-            <!-- Botões -->
+            <p id="mensagemDetalhes" class="mensagem"></p>
+
             <div class="botoes">
                 <a class="botao cancelar" href="index.html">Voltar</a>
-                <a class="botao" href="cadastro.html">Editar</a>
-                <button class="botao concluida" type="button">
-                    Marcar como concluída
-                </button>
-                <button class="botao excluir" type="button">Excluir</button>
+                <button id="concluir" class="botao concluida">Marcar como concluída</button>
+                <button id="excluir" class="botao excluir">Excluir</button>
             </div>
         </article>
     </main>
@@ -55,5 +47,6 @@
         <p>AgendaFácil - Organize seu dia</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
