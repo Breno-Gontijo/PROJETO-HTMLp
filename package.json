@@ -1,13 +1,13 @@
 {
-  "name": "agendafacil-etapa-06",
-  "version": "1.0.0",
+  "name": "agendafacil-etapa-07",
+  "version": "1.0.1",
   "private": true,
-  "description": "API REST do projeto AgendaFácil",
+  "description": "AgendaFácil com API REST e persistência SQLite usando o módulo nativo do Node.js",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22.5.0"
   }
 }

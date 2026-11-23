@@ -1,46 +1,41 @@
-# AgendaFácil — Etapa 06
+# AgendaFácil — Etapa 07
 
-Projeto de agenda de tarefas com front-end em HTML, CSS e JavaScript e uma API REST feita em Node.js, utilizando apenas módulos nativos do Node.
+Agenda de tarefas com front-end em HTML, CSS e JavaScript, API REST em Node.js e persistência em banco de dados SQLite.
 
 ## Requisitos
 
-- Node.js 18 ou superior.
+- Node.js 22.5.0 ou superior (a versão 22 LTS, 24 LTS ou 26 também pode ser utilizada).
 - Navegador atualizado.
-- Postman (opcional, para testar a API).
-
-Não é necessário instalar dependências com npm. O servidor utiliza o módulo `http` nativo do Node.js.
+- Não é necessário instalar Python, Visual Studio Build Tools ou pacotes npm para o banco.
 
 ## Como executar no Windows
 
-1. Instale o Node.js LTS: https://nodejs.org/ (caso ainda não esteja instalado).
+1. Instale o Node.js 22.5 ou superior: https://nodejs.org/.
 2. Extraia a pasta do projeto.
 3. Dê dois cliques em `iniciar.bat`.
-4. Aguarde o navegador abrir em `http://127.0.0.1:3000`.
-5. Não feche a janela chamada **AgendaFacil - Servidor** enquanto estiver usando o sistema.
+4. Aguarde o servidor iniciar e o navegador abrir em `http://127.0.0.1:3000`.
+5. Mantenha a janela do servidor aberta enquanto usar o sistema.
 
-Também é possível iniciar pelo terminal, dentro da pasta do projeto:
+Também é possível abrir o terminal na pasta do projeto e executar:
 
 ```bash
-node server.js
+npm start
 ```
 
-Depois acesse `http://127.0.0.1:3000`.
+Não é necessário executar `npm install`: o acesso ao SQLite utiliza o módulo `node:sqlite`, que já acompanha o Node.js nas versões exigidas.
 
-## Organização
+## Banco de dados
 
-- `server.js`: inicialização do servidor HTTP e entrega dos arquivos do site.
-- `rotas/tarefas.js`: endpoints REST do recurso de tarefas.
-- `utilitarios/validacao.js`: validação dos dados recebidos.
-- `utilitarios/respostas.js`: formato padronizado das respostas e erros.
-- `js/api.js`: chamadas HTTP feitas pelo front-end usando Fetch API.
-- `js/tarefas.js`: funções de acesso às tarefas utilizadas pelas telas.
-- `js/app.js`: eventos e atualização da interface.
-- `dados/tarefas.json`: arquivo usado para persistir as tarefas.
-- `docs/etapa-06.md`: documentação dos endpoints e exemplos.
-- `postman/AgendaFacil-Etapa-06.postman_collection.json`: coleção para importar no Postman.
+O SQLite é criado automaticamente em `dados/agendafacil.db`. As tabelas e categorias iniciais são criadas na primeira execução. Não apague esse arquivo para manter os registros.
 
-## Endereço da API
+## API
 
-`http://127.0.0.1:3000/api/tarefas`
+- `GET /api/tarefas`
+- `GET /api/tarefas/:id`
+- `POST /api/tarefas`
+- `PUT /api/tarefas/:id`
+- `PATCH /api/tarefas/:id`
+- `DELETE /api/tarefas/:id`
+- `GET /api/categorias`
 
-A API e o front-end são servidos pela mesma aplicação. Os dados ficam no arquivo `dados/tarefas.json` e continuam disponíveis depois de reiniciar o servidor.
+A documentação completa está em `docs/etapa-07.md`.

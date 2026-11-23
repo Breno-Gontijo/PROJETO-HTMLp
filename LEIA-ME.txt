@@ -1,0 +1,11 @@
+Evidências da Etapa 05
+
+As capturas desta etapa devem ser feitas após executar o projeto no navegador.
+Sugestão de capturas:
+1. Calendário mostrando o carregamento e as tarefas carregadas.
+2. Cadastro mostrando o estado "Enviando..." ou a confirmação de sucesso.
+3. Calendário com a tarefa recém-cadastrada.
+4. Tela com a mensagem de erro usando ?falha=1.
+
+As imagens antigas das etapas 03 e 04 foram mantidas nas respectivas pastas.
+Não foram criadas capturas fictícias para a Etapa 05.
