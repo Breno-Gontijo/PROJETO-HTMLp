@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "titulo": "Prova de Cálculo",
+        "descricao": "Prova referente ao conteúdo da primeira unidade.",
+        "data": "2026-11-25",
+        "horario": "19:00",
+        "categoria": "estudos",
+        "concluida": false
+    },
+    {
+        "id": 2,
+        "titulo": "Reunião",
+        "descricao": "Reunião de trabalho.",
+        "data": "2026-11-27",
+        "horario": "14:00",
+        "categoria": "trabalho",
+        "concluida": false
+    }
+]

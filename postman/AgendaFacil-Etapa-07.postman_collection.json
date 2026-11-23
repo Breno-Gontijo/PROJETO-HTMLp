@@ -1,0 +1,193 @@
+{
+  "info": {
+    "_postman_id": "8f2c4b71-2e6d-4db9-a9bd-6e0d5c6a0606",
+    "name": "AgendaFácil - Etapa 07 (CRUD com SQLite)",
+    "description": "Testes dos endpoints de tarefas. Inicie o servidor antes de executar as requisições.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:3000"
+    },
+    {
+      "key": "id",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Tarefas - GET - Listar todas",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/tarefas"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status 200', function () { pm.response.to.have.status(200); });",
+              "pm.test('Resposta em JSON', function () { pm.response.to.have.header('Content-Type', /application\\/json/); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tarefas - GET - Consultar por ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/tarefas/{{id}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status 200', function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tarefas - POST - Criar",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"Tarefa criada pelo Postman\",\n  \"descricao\": \"Teste de criação pela API\",\n  \"data\": \"2026-12-10\",\n  \"horario\": \"15:00\",\n  \"categoria\": \"estudos\"\n}"
+        },
+        "url": "{{baseUrl}}/api/tarefas"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status 201', function () { pm.response.to.have.status(201); });",
+              "const body = pm.response.json();",
+              "if (body.dados && body.dados.id) pm.collectionVariables.set('id', body.dados.id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tarefas - PUT - Substituir",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"Tarefa atualizada pelo Postman\",\n  \"descricao\": \"Dados substituídos\",\n  \"data\": \"2026-12-11\",\n  \"horario\": \"16:00\",\n  \"categoria\": \"trabalho\",\n  \"concluida\": false\n}"
+        },
+        "url": "{{baseUrl}}/api/tarefas/{{id}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status 200', function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tarefas - PATCH - Alterar parcialmente",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"concluida\": true\n}"
+        },
+        "url": "{{baseUrl}}/api/tarefas/{{id}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status 200', function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tarefas - DELETE - Excluir",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{baseUrl}}/api/tarefas/{{id}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status 200', function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tarefas - POST - Validar erro (sem título)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"descricao\": \"Sem os campos obrigatórios\",\n  \"data\": \"2026-12-10\",\n  \"horario\": \"15:00\",\n  \"categoria\": \"estudos\"\n}"
+        },
+        "url": "{{baseUrl}}/api/tarefas"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status 400', function () { pm.response.to.have.status(400); });",
+              "pm.test('Erro possui formato padrão', function () { pm.expect(pm.response.json().erro).to.have.property('mensagem'); });"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
