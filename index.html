@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgendaFácil</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
@@ -25,10 +25,12 @@
         <section class="calendario">
             <div class="mes">
                 <button id="anterior" type="button">‹</button>
-                <h3 id="nomeMes">Setembro 2026</h3>
+                <h3 id="nomeMes">Carregando...</h3>
                 <button id="proximo" type="button">›</button>
             </div>
 
+            <p id="mensagemGeral" class="mensagem" role="status" aria-live="polite">Preparando calendário...</p>
+            <button id="tentarNovamente" class="botao" type="button" hidden>Tentar novamente</button>
             <div id="calendario" class="dias"></div>
         </section>
 
@@ -43,6 +45,6 @@
         <p>AgendaFácil - Organize seu dia</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>
