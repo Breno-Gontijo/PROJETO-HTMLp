@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgendaFácil</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>AgendaFácil</h1>
+        <nav>
+            <a href="index.html">Calendário</a>
+            <a href="cadastro.html">Nova tarefa</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Meu calendário</h2>
+            <p>Organize suas tarefas e compromissos.</p>
+            <a class="botao" href="cadastro.html">+ Nova tarefa</a>
+        </section>
+
+        <section class="calendario">
+            <div class="mes">
+                <button id="anterior" type="button">‹</button>
+                <h3 id="nomeMes">Carregando...</h3>
+                <button id="proximo" type="button">›</button>
+            </div>
+
+            <p id="mensagemGeral" class="mensagem" role="status" aria-live="polite">Preparando calendário...</p>
+            <button id="tentarNovamente" class="botao" type="button" hidden>Tentar novamente</button>
+            <div id="calendario" class="dias"></div>
+        </section>
+
+        <section class="legenda">
+            <p><span class="estudos"></span> Estudos</p>
+            <p><span class="trabalho"></span> Trabalho</p>
+            <p><span class="pessoal"></span> Pessoal</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>AgendaFácil - Organize seu dia</p>
+    </footer>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
