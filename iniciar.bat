@@ -1,31 +1,33 @@
 @echo off
-setlocal
+chcp 65001 >nul
 cd /d "%~dp0"
 
-set "PORTA=8765"
+echo ========================================
+echo          AGENDAFACIL - ETAPA 06
+echo ========================================
+echo.
 
-where powershell.exe >nul 2>nul
+where node >nul 2>nul
 if errorlevel 1 (
-    echo O Windows PowerShell nao foi encontrado.
-    echo Abra a pasta pelo VS Code e use a extensao Live Server.
+    echo ERRO: Node.js nao foi encontrado.
+    echo Instale a versao LTS em https://nodejs.org/
+    echo Depois feche e abra esta janela novamente.
     pause
     exit /b 1
 )
 
-start "AgendaFacil - Servidor" powershell.exe -NoLogo -NoProfile -ExecutionPolicy Bypass -File "%~dp0servidor.ps1" -Porta %PORTA%
+start "AgendaFacil - Servidor" /D "%~dp0" cmd /k "node server.js"
 
-echo Iniciando o AgendaFacil...
-powershell.exe -NoLogo -NoProfile -Command "$fim=(Get-Date).AddSeconds(15); do { try { $cliente=[System.Net.Sockets.TcpClient]::new(); $cliente.Connect('127.0.0.1',%PORTA%); $cliente.Close(); exit 0 } catch { Start-Sleep -Milliseconds 300 } } while ((Get-Date) -lt $fim); exit 1"
+echo Iniciando o servidor...
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$limite=(Get-Date).AddSeconds(15); do { Start-Sleep -Milliseconds 500; try { $r=Invoke-WebRequest -UseBasicParsing http://127.0.0.1:3000/api/tarefas -TimeoutSec 1; if ($r.StatusCode -eq 200) { Start-Process 'http://127.0.0.1:3000'; exit 0 } } catch {} } while ((Get-Date) -lt $limite); exit 1"
 if errorlevel 1 (
     echo.
-    echo Nao foi possivel iniciar o servidor na porta %PORTA%.
-    echo Verifique a janela 'AgendaFacil - Servidor' para ver o erro.
+    echo Nao foi possivel iniciar o servidor na porta 3000.
+    echo Verifique se a porta ja esta sendo usada.
     pause
     exit /b 1
 )
-
-start "" "http://127.0.0.1:%PORTA%/index.html"
 echo.
-echo O AgendaFacil esta aberto no navegador.
-echo Para encerrar, feche a janela do servidor.
-exit /b 0
+echo AgendaFacil aberto no navegador.
+echo Mantenha a janela do servidor aberta enquanto estiver usando o sistema.
+pause
